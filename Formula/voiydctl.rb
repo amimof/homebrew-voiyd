@@ -5,11 +5,34 @@
 class Voiydctl < Formula
   desc "Lightweight, eventdriven orchestration for container workloads"
   homepage "https://github.com/amimof/voiyd"
-  url "https://github.com/amimof/voiyd/archive/refs/tags/v0.0.12.tar.gz"
-  sha256 "6f1333b8c648245c068245d60690dfaa70e25935017ba6a23b60ec32167413ea"
+  version "v0.0.12"
   license "Apache-2.0"
+
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://github.com/amimof/voiyd/releases/download/#{version}/voiydctl-darwin-arm64"
+    sha256 "sha256:46dadd6b25ada30e8f000e4c09072642e51170655bca6efb70e1cebf70d9221b"
+  elsif OS.mac? && Hardware::CPU.intel?
+    url "https://github.com/amimof/voiyd/releases/download/#{version}/voiydctl-darwin-amd64"
+    sha256 "sha256:21ea8db0a98c78ebe392f563008698693799e3adf812041cdc388a3f8528f0d8"
+  elsif OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/amimof/voiyd/releases/download/#{version}/voiydctl-linux-amd64"
+    sha256 "sha256:8bdc743fd9d279678f9e97a1791994b03d4af5605b77750fb2041a7af387098f"
+  elsif OS.linux? && Hardware::CPU.arm?
+    if Hardware::CPU.is_64_bit?
+      url "https://github.com/amimof/voiyd/releases/download/#{version}/voiydctl-linux-arm64"
+      sha256 "sha256:dde9fda9986ac9810527000d9ac0a13707ebbcc092bdb53b7f07049c9584be7e"
+    else
+      url "https://github.com/amimof/voiyd/releases/download/#{version}/voiydctl-linux-arm"
+      sha256 "sha256:77d6e4d1dd814677c7c8255e0c5abb04912e6ba306a9f451c3e72f44a7addbf4"
+    end
+  end
 
   def install
     bin.install Dir["voiydctl-*"].first => "voiydctl"
   end
+
+  test do
+    system "#{bin}/voiydctl", "--version"
+  end
+
 end
