@@ -1,7 +1,7 @@
 class Voiydctl < Formula
   desc "Lightweight, event-driven orchestration for container workloads"
   homepage "https://voiyd.io"
-  version \v0.0.12\
+  version "v0.0.12"
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/amimof/voiyd/releases/download/v0.0.12/voiydctl-darwin-amd64"
