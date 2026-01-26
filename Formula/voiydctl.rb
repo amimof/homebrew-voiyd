@@ -1,14 +1,14 @@
 class Voiydctl < Formula
   desc "Lightweight, event-driven orchestration for container workloads"
   homepage "https://voiyd.io"
-  version "v0.0.14"
+  version "v0.0.15"
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/amimof/voiyd/releases/download/v0.0.14/voiydctl-darwin-amd64"
-      sha256 "5319562d601f6bbb22b092903366ec0e57ac412893b68a02d8cf5a4119cb532f"
+      url "https://github.com/amimof/voiyd/releases/download/v0.0.15/voiydctl-darwin-amd64"
+      sha256 "1c096c20de255f6b80530dc8ee34c21dc2c341ce70b4f23ef58b6d2593f64ae8"
     else
-      url "https://github.com/amimof/voiyd/releases/download/v0.0.14/voiydctl-darwin-arm64"
-      sha256 "dfd09093a8ebb6efaba4becc2265914b7f45fa69d55e6e5c46a87567df324fe3"
+      url "https://github.com/amimof/voiyd/releases/download/v0.0.15/voiydctl-darwin-arm64"
+      sha256 "5ce64640b2fc6a6a0988a0f40e4c20598a9ed5ce631d740e422c5960d1bfb553"
     end
   end
   def install
